@@ -8,7 +8,9 @@
     )
 
 
-def montar_payload_gemini(prompt: str) -> dict:
+def montar_payload_gemini(
+    prompt: str, temperatura: float = 0.2, max_tokens: int = 512
+) -> dict:
     return {
         "contents": [
             {
@@ -16,5 +18,9 @@ def montar_payload_gemini(prompt: str) -> dict:
                     {"text": prompt}
                 ]
             }
-        ]
+        ],
+        "generationConfig": {
+            "temperature": temperatura,
+            "maxOutputTokens": max_tokens,
+        },
     }
